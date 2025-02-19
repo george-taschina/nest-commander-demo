@@ -1,0 +1,50 @@
+services:
+  db-a:
+    image: postgres:17
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app_a
+    volumes:
+      - db-a-data:/var/lib/postgresql/data
+
+  db-b:
+    image: postgres:17
+    restart: always
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app_b
+    volumes:
+      - db-b-data:/var/lib/postgresql/data
+
+  app-a:
+    container_name: app-a
+    hostname: app-a
+    build: ${PWD}/docker/devel
+    tty: true
+    environment:
+      DATABASE_URL: "postgresql://user:password@db-a:5432/app_a?schema=public"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app/
+    user: 1000:1000
+    depends_on:
+      - db-a
+
+  app-b:
+    build: ${PWD}/docker/devel
+    environment:
+      DATABASE_URL: "postgresql://user:password@db-b:5432/app_b?schema=public"
+    volumes:
+      - ./:/app/
+    depends_on:
+      - db-b
+
+volumes:
+  db-a-data:
+  db-b-data:

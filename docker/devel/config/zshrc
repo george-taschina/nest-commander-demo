@@ -1,0 +1,9 @@
+export ZSH="/home/node/.oh-my-zsh"
+
+ZSH_THEME="ys"
+
+DISABLE_AUTO_UPDATE="true"
+
+plugins=(git git-extras npm zsh-syntax-highlighting zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh

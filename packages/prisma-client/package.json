@@ -1,0 +1,22 @@
+{
+  "name": "@shared/prisma-client",
+  "version": "1.0.0",
+  "description": "Prisma Client shared between different applications",
+  "license": "MIT",
+  "author": "George Cosmin Taschina",
+  "main": "src/index.ts",
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate:dev": "prisma migrate dev --name init",
+    "migrate:deploy": "prisma migrate deploy"
+  },
+  "devDependencies": {
+    "prisma": "^6.4.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.0"
+  },
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  }
+}
