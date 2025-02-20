@@ -957,7 +957,7 @@
 
 "@microsoft/tsdoc@0.15.1":
   version "0.15.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.15.1.tgz#d4f6937353bc4568292654efb0a0e0532adbcba2"
+  resolved "https://registry.npmjs.org/@microsoft/tsdoc/-/tsdoc-0.15.1.tgz"
   integrity sha512-4aErSrCR/On/e5G2hDP0wjooqDdauzEbIq8hIkIe5pXV0rtWJZvdCEKL0ykZxex+IxIwBp0eGeV48hQN07dXtw==
 
 "@napi-rs/nice-android-arm-eabi@1.0.1":
@@ -1110,7 +1110,7 @@
 
 "@nestjs/mapped-types@2.1.0":
   version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-2.1.0.tgz#b9b536b7c3571567aa1d0223db8baa1a51505a19"
+  resolved "https://registry.npmjs.org/@nestjs/mapped-types/-/mapped-types-2.1.0.tgz"
   integrity sha512-W+n+rM69XsFdwORF11UqJahn4J3xi4g/ZEOlJNL6KoW5ygWSmBB2p0S2BZ4FQeS/NDH72e6xIcu35SfJnE8bXw==
 
 "@nestjs/platform-express@^11.0.1":
@@ -1137,7 +1137,7 @@
 
 "@nestjs/swagger@^11.0.4":
   version "11.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-11.0.4.tgz#72ab3aadfdf9b01d52cca18bbf4972e13ecad4e8"
+  resolved "https://registry.npmjs.org/@nestjs/swagger/-/swagger-11.0.4.tgz"
   integrity sha512-wrdeQucHirv5hakCgFn34GANmqHG0//X0GF+VumYjEeE3H4AGtztbbgwnw/9XeqVM4mD2HjUFx5WYtJMpJvnWQ==
   dependencies:
     "@microsoft/tsdoc" "0.15.1"
@@ -1230,7 +1230,7 @@
 
 "@scarf/scarf@=1.4.0":
   version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@scarf/scarf/-/scarf-1.4.0.tgz#3bbb984085dbd6d982494538b523be1ce6562972"
+  resolved "https://registry.npmjs.org/@scarf/scarf/-/scarf-1.4.0.tgz"
   integrity sha512-xxeapPiUXdZAE3che6f3xogoJPeZgig6omHEy1rIY5WVsB3H2BHNnZH+gHG6x91SCWyQCzWGsuL2Hh3ClO5/qQ==
 
 "@sec-ant/readable-stream@^0.4.1":
@@ -1602,7 +1602,7 @@
 
 "@types/validator@^13.11.8":
   version "13.12.2"
-  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.12.2.tgz#760329e756e18a4aab82fc502b51ebdfebbe49f5"
+  resolved "https://registry.npmjs.org/@types/validator/-/validator-13.12.2.tgz"
   integrity sha512-6SlHBzUW8Jhf3liqrGGXyTJSIFe4nqlJ5A5KaMZ2l/vbM3Wh3KSybots/wfWVzNLK4D1NZluDlSQIbIEPx6oyA==
 
 "@types/yargs-parser@*":
@@ -2413,12 +2413,12 @@ cjs-module-lexer@^1.0.0:
 
 class-transformer@^0.5.1:
   version "0.5.1"
-  resolved "https://registry.yarnpkg.com/class-transformer/-/class-transformer-0.5.1.tgz#24147d5dffd2a6cea930a3250a677addf96ab336"
+  resolved "https://registry.npmjs.org/class-transformer/-/class-transformer-0.5.1.tgz"
   integrity sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==
 
 class-validator@^0.14.1:
   version "0.14.1"
-  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.14.1.tgz#ff2411ed8134e9d76acfeb14872884448be98110"
+  resolved "https://registry.npmjs.org/class-validator/-/class-validator-0.14.1.tgz"
   integrity sha512-2VEG9JICxIqTpoK1eMzZqaV+u/EiwEJkMGzTrZf6sU/fwsnOITVgYJ8yojSy6CaXtO9V0Cc6ZQZ8h8m4UBuLwQ==
   dependencies:
     "@types/validator" "^13.11.8"
@@ -4285,7 +4285,7 @@ levn@^0.4.1:
 
 libphonenumber-js@^1.10.53:
   version "1.11.20"
-  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.11.20.tgz#ef5c663e80f55d9ea01a6e2952bf240e8a6fff52"
+  resolved "https://registry.npmjs.org/libphonenumber-js/-/libphonenumber-js-1.11.20.tgz"
   integrity sha512-/ipwAMvtSZRdiQBHqW1qxqeYiBMzncOQLVA+62MWYr7N4m7Q2jqpJ0WgT7zlOEOpyLRSqrMXidbJpC0J77AaKA==
 
 lines-and-columns@^1.1.6:
@@ -5468,7 +5468,7 @@ supports-preserve-symlinks-flag@^1.0.0:
 
 swagger-ui-dist@5.19.0:
   version "5.19.0"
-  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-5.19.0.tgz#618057e1aaec97e016282eeee5c51ce6cf3da448"
+  resolved "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-5.19.0.tgz"
   integrity sha512-bSVZeYaqanMFeW5ZY3+EejFbsjkjazYxm1I7Lz3xayYz5XU3m2aUzvuPC0jI95WCQdduszHYV3ER4buQoy8DXA==
   dependencies:
     "@scarf/scarf" "=1.4.0"
@@ -5782,7 +5782,7 @@ v8-to-istanbul@^9.0.1:
 
 validator@^13.9.0:
   version "13.12.0"
-  resolved "https://registry.yarnpkg.com/validator/-/validator-13.12.0.tgz#7d78e76ba85504da3fee4fd1922b385914d4b35f"
+  resolved "https://registry.npmjs.org/validator/-/validator-13.12.0.tgz"
   integrity sha512-c1Q0mCiPlgdTVVVIJIrBuxNicYE+t/7oKeI9MWLj3fh/uq2Pxh/3eeWbVZ4OcGW1TUf53At0njHw5SMdA3tmMg==
 
 vary@^1, vary@~1.1.2:

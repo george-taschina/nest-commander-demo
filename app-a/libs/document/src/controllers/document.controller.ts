@@ -19,7 +19,7 @@ import {
 } from '@nestjs/swagger';
 import { CreateDocumentDto } from '../documents/dto/create-document.dto';
 import { UpdateDocumentDto } from '../documents/dto/update-document.dto';
-import { throwIfNull } from '../utils/throw-if-null';
+import { throwIfNull } from '../../../core/src/utils/throw-if-null';
 
 @ApiTags('Documents')
 @Controller('documents')

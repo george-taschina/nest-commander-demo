@@ -18,24 +18,14 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@core/core": [
-        "libs/core/src"
-      ],
-      "@core/core/*": [
-        "libs/core/src/*"
-      ],
-      "@document/document": [
-        "libs/document/src"
-      ],
-      "@document/document/*": [
-        "libs/document/src/*"
-      ],
-      "@user/user": [
-        "libs/user/src"
-      ],
-      "@user/user/*": [
-        "libs/user/src/*"
-      ]
+      "@core/core": ["libs/core/src"],
+      "@core/core/*": ["libs/core/src/*"],
+      "@document/document": ["libs/document/src"],
+      "@document/document/*": ["libs/document/src/*"],
+      "@user/user": ["libs/user/src"],
+      "@user/user/*": ["libs/user/src/*"],
+      "@auth/auth": ["libs/auth/src"],
+      "@auth/auth/*": ["libs/auth/src/*"]
     }
   }
 }
