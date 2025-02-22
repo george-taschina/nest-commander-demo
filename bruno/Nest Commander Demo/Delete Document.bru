@@ -1,0 +1,17 @@
+meta {
+  name: Delete Document
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:3000/documents/123
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "content": "testone"
+  }
+}

@@ -21,10 +21,13 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/jwt": "^11.0.0",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.0.4",
     "@shared/prisma-client": "1.0.0",
+    "bcrypt-ts": "^5.0.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "reflect-metadata": "^0.2.2",
@@ -51,7 +54,6 @@
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.2",
-    "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript-eslint": "^8.20.0"
   },
@@ -82,6 +84,7 @@
     }
   },
   "prisma": {
-    "schema": "../packages/prisma-client/prisma/schema.prisma"
+    "schema": "../packages/prisma-client/prisma/schema.prisma",
+    "seed": "tsx seeds/seed.ts"
   }
 }

@@ -1,0 +1,22 @@
+meta {
+  name: Create Document
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/documents
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWxpY2UiLCJpYXQiOjE3NDAyMjc1MTUsImV4cCI6MTc0MDIzMTExNX0.FmTDIy6cBa5qytdeFisWsfxhOmwmHV3UFqIkXCAHQWw
+}
+
+body:json {
+  {
+    "content": "test",
+    "owner": "george"
+  }
+}

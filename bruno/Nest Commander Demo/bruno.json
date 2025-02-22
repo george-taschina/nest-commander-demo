@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Nest Commander Demo",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

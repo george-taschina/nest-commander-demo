@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { DocumentService } from '../services/document.service';
 import { Document } from '@shared/prisma-client';
@@ -16,10 +17,13 @@ import {
   ApiBody,
   ApiParam,
   ApiNotFoundResponse,
+  ApiUnauthorizedResponse,
+  ApiBadRequestResponse,
 } from '@nestjs/swagger';
 import { CreateDocumentDto } from '../documents/dto/create-document.dto';
 import { UpdateDocumentDto } from '../documents/dto/update-document.dto';
 import { throwIfNull } from '../../../core/src/utils/throw-if-null';
+import { AuthGuard } from '@auth/auth/guards/auth.guard';
 
 @ApiTags('Documents')
 @Controller('documents')
@@ -57,6 +61,9 @@ export class DocumentController {
     description: 'The created document',
     type: Document,
   })
+  @ApiBadRequestResponse()
+  @ApiUnauthorizedResponse()
+  @UseGuards(AuthGuard)
   async create(@Body() data: CreateDocumentDto): Promise<Document> {
     return await this.documentService.create(data);
   }
@@ -67,6 +74,8 @@ export class DocumentController {
   @ApiBody({ type: UpdateDocumentDto })
   @ApiResponse({ status: 200, description: 'Updated document', type: Document })
   @ApiNotFoundResponse()
+  @ApiUnauthorizedResponse()
+  @UseGuards(AuthGuard)
   async update(
     @Param('id') id: number,
     @Body() data: UpdateDocumentDto,
@@ -79,6 +88,8 @@ export class DocumentController {
   @ApiParam({ name: 'id', description: 'Document ID' })
   @ApiResponse({ status: 200, description: 'Deleted document', type: Document })
   @ApiNotFoundResponse()
+  @ApiUnauthorizedResponse()
+  @UseGuards(AuthGuard)
   async delete(@Param('id') id: number): Promise<Document> {
     return await this.documentService.delete(id);
   }

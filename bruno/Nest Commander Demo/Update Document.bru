@@ -1,0 +1,17 @@
+meta {
+  name: Update Document
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/documents/123
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "content": "testone"
+  }
+}

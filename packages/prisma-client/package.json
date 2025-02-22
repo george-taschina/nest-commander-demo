@@ -5,6 +5,7 @@
   "license": "MIT",
   "author": "George Cosmin Taschina",
   "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "generate": "prisma generate",
     "migrate:dev": "prisma migrate dev --name init",
