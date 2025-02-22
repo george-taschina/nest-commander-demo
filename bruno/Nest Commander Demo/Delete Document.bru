@@ -5,9 +5,13 @@ meta {
 }
 
 delete {
-  url: http://localhost:3000/documents/123
+  url: http://localhost:3000/documents/1
   body: none
-  auth: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYWxpY2UiLCJpYXQiOjE3NDAyMjc4NTIsImV4cCI6MTc0MDIzMTQ1Mn0.U2rX-djnOiE-r53tfVidlwfExpAfd_J_ZBR6P1p8rcs
 }
 
 body:json {
