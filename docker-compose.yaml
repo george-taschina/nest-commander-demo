@@ -37,7 +37,10 @@ services:
       - db-a
 
   app-b:
+    container_name: app-b
+    hostname: app-b
     build: ${PWD}/docker/devel
+    tty: true
     environment:
       DATABASE_URL: "postgresql://user:password@db-b:5432/app_b?schema=public"
     volumes:
