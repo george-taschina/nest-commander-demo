@@ -17,6 +17,6 @@ docker exec app-a yarn prisma:migrate:dev
 docker exec app-b yarn install
 docker exec app-b yarn prisma:generate
 docker exec app-b yarn prisma:migrate:dev
-docker exec app-b yarn build
+docker exec app-b yarn build:app-b
 docker exec app-a yarn prisma:seed:app-a
 $DOCKER_COMPOSE stop

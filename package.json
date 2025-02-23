@@ -16,7 +16,8 @@
     "docker:up": "docker-compose up",
     "prisma:generate": "npm run generate --workspace=packages/prisma-client",
     "prisma:migrate:dev": "npm run migrate:dev --workspace=packages/prisma-client",
-    "prisma:seed:app-a": "cd app-a && npx prisma db seed"
+    "prisma:seed:app-a": "cd app-a && npx prisma db seed",
+    "build:app-b": "npm run build --workspace=app-b"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
