@@ -1,20 +1,25 @@
 import { Command } from "commander";
 import figlet from "figlet";
+import { LoginCommand } from "./commands/login";
+import { GetListCommand } from "./commands/get-list";
+import { GetCommand } from "./commands/get";
+import { SaveCommand } from "./commands/save";
+import { DeleteCommand } from "./commands/delete";
+import { UpdateCommand } from "./commands/update";
+import { GetLocalListCommand } from "./commands/get-local-list";
 
 const program = new Command();
 
 console.log(`${figlet.textSync("Application B Manager")} \n`);
 
-if (process.argv[2] === undefined) {
-  console.log("Run command with arg '-h' to list all available options...");
-}
+program.version("1.0.0").description("A CLI for managing application B");
 
-program
-  .version("1.0.0")
-  .description("An example CLI for managing a directory")
-  .option("-l, --ls  [value]", "List directory contents")
-  .option("-m, --mkdir <value>", "Create a directory")
-  .option("-t, --touch <value>", "Create a file")
-  .parse(process.argv);
+new DeleteCommand().register(program);
+new UpdateCommand().register(program);
+new SaveCommand().register(program);
+new LoginCommand().register(program);
+new GetCommand().register(program);
+new GetListCommand().register(program);
+new GetLocalListCommand().register(program);
 
-const options = program.opts();
+program.parse(process.argv);
