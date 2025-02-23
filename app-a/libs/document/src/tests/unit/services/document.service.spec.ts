@@ -88,6 +88,7 @@ describe('DocumentService', () => {
         content: dto.content!,
         owner: dto.owner!,
       };
+      jest.spyOn(repository, 'findOne').mockResolvedValue(result);
       jest.spyOn(repository, 'update').mockResolvedValue(result);
 
       expect(await service.update(1, dto)).toBe(result);
@@ -102,6 +103,7 @@ describe('DocumentService', () => {
         owner: 'owner',
         createdAt: new Date(),
       };
+      jest.spyOn(repository, 'findOne').mockResolvedValue(result);
       jest.spyOn(repository, 'delete').mockResolvedValue(result);
 
       expect(await service.delete(1)).toBe(result);
