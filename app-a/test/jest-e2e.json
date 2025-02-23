@@ -2,7 +2,8 @@
   "moduleFileExtensions": [
     "js",
     "json",
-    "ts"
+    "ts",
+    "mjs"
   ],
   "rootDir": "../",
   "testEnvironment": "node",
@@ -10,6 +11,8 @@
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
+  "transformIgnorePatterns": ["node_modules/(?!(.*\\.mjs$|pdfjs-dist))"],
+  "extensionsToTreatAsEsm": [".ts"],
   "moduleNameMapper": {
     "@core/core": "<rootDir>/libs/core/src",
     "@core/core/(.*)": "<rootDir>/libs/core/src/$1",

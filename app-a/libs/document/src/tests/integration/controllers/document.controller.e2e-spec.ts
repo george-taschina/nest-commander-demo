@@ -1,139 +1,134 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/require-await */
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { CanActivate, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AuthGuard } from '@auth/auth/guards/auth.guard';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-import { DocumentController } from '@document/document/controllers/document.controller';
-import { DocumentService } from '@document/document/services/document.service';
-import { PrismaService } from '@core/core/services/prisma.service';
+import { Document } from '@shared/prisma-client';
+import { DocumentModule } from '@document/document/document.module';
 import { CreateDocumentDto } from '@document/document/documents/dto/create-document.dto';
 import { UpdateDocumentDto } from '@document/document/documents/dto/update-document.dto';
+import { AuthGuard } from '@auth/auth/guards/auth.guard';
 
-describe('DocumentController (integration)', () => {
+jest.mock('bcrypt-ts', () => ({
+  compareSync: jest.fn().mockReturnValue(true),
+}));
+
+describe('DocumentController (e2e)', () => {
   let app: INestApplication;
-  let documentService: DocumentService;
 
   beforeAll(async () => {
+    const mockGuard: CanActivate = {
+      canActivate: jest.fn(() => true),
+    };
+
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      controllers: [DocumentController],
-      providers: [
-        DocumentService,
-        PrismaService,
-        { provide: AuthGuard, useValue: { canActivate: jest.fn(() => true) } },
-        { provide: JwtService, useValue: {} },
-        { provide: ConfigService, useValue: {} },
-      ],
-    }).compile();
+      imports: [DocumentModule],
+    })
+      .overrideGuard(AuthGuard)
+      .useValue(mockGuard)
+      .compile();
 
     app = moduleFixture.createNestApplication();
     await app.init();
-
-    documentService = moduleFixture.get<DocumentService>(DocumentService);
   });
 
   afterAll(async () => {
     await app.close();
   });
 
-  describe('/GET documents', () => {
+  describe('GET /documents', () => {
     it('should return an array of documents', async () => {
-      const result = [
+      const result: Document[] = [
         {
           id: 1,
-          content: 'test',
-          owner: 'owner',
+          content: 'This is a test document',
+          owner: 'test',
           createdAt: new Date(),
-          updatedAt: new Date(),
         },
       ];
-      jest.spyOn(documentService, 'findAll').mockResolvedValue(result);
 
-      const response = await request(app.getHttpServer()).get('/documents');
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(result);
+      return request(app.getHttpServer())
+        .get('/documents')
+        .expect(200)
+        .expect(result);
     });
   });
 
-  describe('/GET documents/:id', () => {
+  describe('GET /documents/:id', () => {
     it('should return a single document', async () => {
-      const result = {
+      const result: Document = {
         id: 1,
-        content: 'test',
-        owner: 'owner',
+        content: 'This is a test document',
+        owner: 'test',
         createdAt: new Date(),
-        updatedAt: new Date(),
       };
-      jest.spyOn(documentService, 'findOne').mockResolvedValue(result);
 
-      const response = await request(app.getHttpServer()).get('/documents/1');
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(result);
+      return request(app.getHttpServer())
+        .get('/documents/1')
+        .expect(200)
+        .expect(result);
     });
 
-    it('should return 404 if document not found', async () => {
-      jest.spyOn(documentService, 'findOne').mockResolvedValue(null);
-
-      const response = await request(app.getHttpServer()).get('/documents/1');
-      expect(response.status).toBe(404);
+    it('should return 404 if document is not found', async () => {
+      return request(app.getHttpServer()).get('/documents/999').expect(404);
     });
   });
 
-  describe('/POST documents', () => {
-    it('should create and return a document', async () => {
-      const dto: CreateDocumentDto = { content: 'test', owner: 'owner' };
-      const result = {
+  describe('POST /documents', () => {
+    it('should create a new document', async () => {
+      const createDocumentDto: CreateDocumentDto = {
+        owner: 'test',
+        content: 'This is a new document',
+      };
+      const result: Document = {
         id: 1,
-        content: dto.content,
-        owner: dto.owner,
+        ...createDocumentDto,
         createdAt: new Date(),
       };
-      jest.spyOn(documentService, 'create').mockResolvedValue(result);
 
-      const response = await request(app.getHttpServer())
+      return request(app.getHttpServer())
         .post('/documents')
-        .send(dto);
-      expect(response.status).toBe(201);
-      expect(response.body).toEqual(result);
+        .send(createDocumentDto)
+        .expect(201)
+        .expect(result);
     });
   });
 
-  describe('/PATCH documents/:id', () => {
-    it('should update and return a document', async () => {
-      const dto: UpdateDocumentDto = { content: 'updated', owner: 'owner' };
-      const result = {
+  describe('PATCH /documents/:id', () => {
+    it('should update a document', async () => {
+      const updateDocumentDto: UpdateDocumentDto = {
+        owner: 'test',
+        content: 'This is an updated document',
+      };
+      const result: Document = {
         id: 1,
-        content: dto.content!,
-        owner: dto.owner!,
+        content: updateDocumentDto.content!,
+        owner: updateDocumentDto.owner!,
         createdAt: new Date(),
       };
-      jest.spyOn(documentService, 'update').mockResolvedValue(result);
 
-      const response = await request(app.getHttpServer())
+      return request(app.getHttpServer())
         .patch('/documents/1')
-        .send(dto);
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(result);
+        .send(updateDocumentDto)
+        .expect(200)
+        .expect(result);
     });
   });
 
-  describe('/DELETE documents/:id', () => {
-    it('should delete and return a document', async () => {
-      const result = {
+  describe('DELETE /documents/:id', () => {
+    it('should delete a document', async () => {
+      const result: Document = {
         id: 1,
-        content: 'test',
-        owner: 'owner',
+        owner: 'test',
+        content: 'This is a test document',
         createdAt: new Date(),
-        updatedAt: new Date(),
       };
-      jest.spyOn(documentService, 'delete').mockResolvedValue(result);
 
-      const response = await request(app.getHttpServer()).delete(
-        '/documents/1',
-      );
-      expect(response.status).toBe(200);
-      expect(response.body).toEqual(result);
+      return request(app.getHttpServer())
+        .delete('/documents/1')
+        .expect(200)
+        .expect(result);
     });
   });
 });

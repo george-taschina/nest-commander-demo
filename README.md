@@ -15,7 +15,7 @@ A demo application for managing documents
 2. Copy environment files:
 
    ```bash
-   cp packages/app-a/.env.example packages/app-a/.env
+   cp app-a/.env.example app-a/.env
    ```
 
 3. Update the environment variables in `.env` file as needed
@@ -85,13 +85,13 @@ This interactive documentation provides:
 ### Unit Tests
 
 ```bash
-npm run backend:test
+yarn backend:test
 ```
 
 ### E2E Tests
 
 ```bash
-npm run backend:test:e2e    # Run end-to-end tests
+yarn backend:test:e2e    # Run end-to-end tests
 ```
 
 ## 📄 License
