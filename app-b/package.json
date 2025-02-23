@@ -6,7 +6,7 @@
     "app-b": "./dist/main.js"
   },
   "scripts": {
-    "start": "APP_A_URL=http://app-a:3000 node dist/main.js",
+    "start": "node dist/main.js",
     "build": "tsc",
     "test": "jest",
     "lint": "eslint \"{src,test}/**/*.ts\"",

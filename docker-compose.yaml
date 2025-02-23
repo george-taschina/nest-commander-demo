@@ -42,6 +42,7 @@ services:
     build: ${PWD}/docker/devel
     tty: true
     environment:
+      APP_A_URL: "http://app-a:3000"
       DATABASE_URL: "postgresql://user:password@db-b:5432/app_b?schema=public"
     volumes:
       - ./:/app/
