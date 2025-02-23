@@ -24,6 +24,7 @@ import { CreateDocumentDto } from '../documents/dto/create-document.dto';
 import { UpdateDocumentDto } from '../documents/dto/update-document.dto';
 import { throwIfNull } from '../../../core/src/utils/throw-if-null';
 import { AuthGuard } from '@auth/auth/guards/auth.guard';
+import { ResponseDocumentDto } from '../documents/dto/response-document.dto';
 
 @ApiTags('Documents')
 @Controller('documents')
@@ -35,7 +36,8 @@ export class DocumentController {
   @ApiResponse({
     status: 200,
     description: 'List of documents',
-    type: [Document],
+    type: ResponseDocumentDto,
+    isArray: true,
   })
   async findAll(): Promise<Document[]> {
     return await this.documentService.findAll();
@@ -44,7 +46,11 @@ export class DocumentController {
   @Get(':id')
   @ApiOperation({ summary: 'Get a document by ID' })
   @ApiParam({ name: 'id', description: 'Document ID' })
-  @ApiResponse({ status: 200, description: 'Found document', type: Document })
+  @ApiResponse({
+    status: 200,
+    description: 'Found document',
+    type: ResponseDocumentDto,
+  })
   @ApiNotFoundResponse()
   async findOne(@Param('id') id: number): Promise<Document> {
     return throwIfNull(
@@ -59,7 +65,7 @@ export class DocumentController {
   @ApiResponse({
     status: 201,
     description: 'The created document',
-    type: Document,
+    type: ResponseDocumentDto,
   })
   @ApiBadRequestResponse()
   @ApiUnauthorizedResponse()
@@ -72,7 +78,11 @@ export class DocumentController {
   @ApiOperation({ summary: 'Update a document' })
   @ApiParam({ name: 'id', description: 'Document ID' })
   @ApiBody({ type: UpdateDocumentDto })
-  @ApiResponse({ status: 200, description: 'Updated document', type: Document })
+  @ApiResponse({
+    status: 200,
+    description: 'Updated document',
+    type: ResponseDocumentDto,
+  })
   @ApiNotFoundResponse()
   @ApiUnauthorizedResponse()
   @UseGuards(AuthGuard)
@@ -86,7 +96,11 @@ export class DocumentController {
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a document' })
   @ApiParam({ name: 'id', description: 'Document ID' })
-  @ApiResponse({ status: 200, description: 'Deleted document', type: Document })
+  @ApiResponse({
+    status: 200,
+    description: 'Deleted document',
+    type: ResponseDocumentDto,
+  })
   @ApiNotFoundResponse()
   @ApiUnauthorizedResponse()
   @UseGuards(AuthGuard)

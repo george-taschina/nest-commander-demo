@@ -4,18 +4,20 @@
     "json",
     "ts"
   ],
-  "rootDir": ".",
+  "rootDir": "../",
   "testEnvironment": "node",
   "testRegex": ".e2e-spec.ts$",
   "transform": {
     "^.+\\.(t|j)s$": "ts-jest"
   },
   "moduleNameMapper": {
-    "@core/core": "<rootDir>/../libs/core/src",
-    "@core/core/(.*)": "<rootDir>/../libs/core/src/$1",
-    "@document/document": "<rootDir>/../libs/document/src",
-    "@document/document/(.*)": "<rootDir>/../libs/document/src/$1",
-    "@user/user": "<rootDir>/../libs/user/src",
-    "@user/user/(.*)": "<rootDir>/../libs/user/src/$1"
+    "@core/core": "<rootDir>/libs/core/src",
+    "@core/core/(.*)": "<rootDir>/libs/core/src/$1",
+    "@document/document": "<rootDir>/libs/document/src",
+    "@document/document/(.*)": "<rootDir>/libs/document/src/$1",
+    "@user/user": "<rootDir>/libs/user/src",
+    "@user/user/(.*)": "<rootDir>/libs/user/src/$1",
+    "@auth/auth": "<rootDir>/libs/auth/src",
+    "@auth/auth/(.*)": "<rootDir>/libs/auth/src/$1"
   }
 }
