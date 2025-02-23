@@ -50,6 +50,22 @@ yarn start # this will display all possible commands to run
 yarn start <command>
 ```
 
+Here is the list of all available commands:
+
+#### Commands
+
+- `yarn start delete <id>`: Elimina un documento in App A
+- `yarn start update [options] <id>`: Aggiorna un documento in App A
+- `yarn start save <content> <owner>`: Salva un documento in App A
+- `yarn start login <username> <password>`: Esegui il login in App A
+- `yarn start get <id>`: Ottieni documento da App A e salvalo localmente
+- `yarn start get-list`: Ottieni la lista dei documenti da App A e salvali localmente
+- `yarn start get-local-list`: Ottieni la lista dei documenti salvati localmente
+- `yarn start help [command]`: Display help for command
+
+> [!warning]
+> save, update and delete commands are protected, first launch the login commands with valid information, one of the available users in dev enviornment is: alice, password123
+
 ## 📚 API Documentation
 
 Swagger UI is automatically available at:  
