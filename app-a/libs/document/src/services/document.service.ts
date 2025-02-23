@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DocumentRepository } from '../repositories/document.repository';
 import { Document } from '@shared/prisma-client';
 import { CreateDocumentDto } from '../documents/dto/create-document.dto';
@@ -21,10 +21,24 @@ export class DocumentService {
   }
 
   async update(id: number, data: UpdateDocumentDto): Promise<Document> {
+    const exists = await this.findOne(id);
+
+    if (!exists) {
+      throw new NotFoundException(
+        'Could not update record, because it does not exist',
+      );
+    }
     return this.documentRepository.update(id, data);
   }
 
   async delete(id: number): Promise<Document> {
+    const exists = await this.findOne(id);
+
+    if (!exists) {
+      throw new NotFoundException(
+        'Could not delete record, because it does not exist',
+      );
+    }
     return this.documentRepository.delete(id);
   }
 }

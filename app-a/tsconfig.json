@@ -18,6 +18,7 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
+
     "paths": {
       "@core/core": ["libs/core/src"],
       "@core/core/*": ["libs/core/src/*"],
