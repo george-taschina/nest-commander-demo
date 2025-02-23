@@ -94,6 +94,10 @@ yarn backend:test
 yarn backend:test:e2e    # Run end-to-end tests
 ```
 
+## 🛠️ Bruno Support
+
+This application supports Bruno, a powerful API development and testing tool. You can use Bruno to interact with the API endpoints, test requests and responses, and manage your API collections.
+
 ## 📄 License
 
 [MIT](https://opensource.org/license/mit) - See the LICENSE file for details
